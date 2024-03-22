@@ -1,0 +1,79 @@
+@file=/home/ta2khu75/Downloads/images/pokemons
+
+Content-Type: application/json
+
+{
+    "name":"cây",
+    "price":2432,
+    "thumbnail":"",
+    "description":"this is a product",
+    "category_id":1
+}
+
+###
+Delete http://localhost:8080/api/v1/products/96
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODgiLCJ1c2VySWQiOjEzLCJzdWIiOiIwMTIzNDU2Nzg4IiwiZXhwIjoxNzExMzc5ODk3fQ.6_cz7VQyjescEMw-7GRp7mLu183ry53xgWm9AVW2s0M
+###
+Get http://localhost:8080/api/v1/products?page=0&limit=10&category=0&keyword=
+
+###
+Post http://localhost:8080/api/v1/products/generateFakeProducts
+
+###
+Get http://localhost:8080/api/v1/products/6
+
+###
+Get http://localhost:8080/api/v1/products/6
+###
+Get http://localhost:8080/api/v1/products/images/1cc26c8f-b2a6-44b4-aab6-dc7f14da60ce_1.jpg
+###
+
+POST http://localhost:8080/api/v1/products/images/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODgiLCJzdWIiOiIwMTIzNDU2Nzg4IiwiZXhwIjoxNzA4OTM0OTExfQ.xeh3YsrsNye2E3sEtxPX4rdbCCQpNV4wCqPY2tWPrMI
+Content-Type:  multipart/form-data; boundary=----WebKitFormBoundaryABC123
+
+--boundary
+Content-Disposition: form-data; name="files"; filename="example.png"
+Content-Type: image/png
+
+@/home/ta2khu75/Pictures/Screenshots/a.png
+--boundary--
+
+# @PostMapping(value = "/images/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+#     public ResponseEntity<?> postMethodName(@Rep List<MultipartFile> files, @PathVariable long id) 
+#         // TODO: process POST request
+#         nhưng @ModelAttribute List<MultipartFile> files= null cách sửa lỗi này
+###
+POST http://localhost:8080/api/v1/products/images/24
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODkiLCJzdWIiOiIwMTIzNDU2Nzg5IiwiZXhwIjoxNzA5MDMzNjg3fQ.H9RiPXNZ29uUtb9fePlr_KhT31KZ96X1Ydotqj7Bxbg
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="1.png"
+Content-Type: image/png
+
+< {{file}}/4.png
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="2.png"
+Content-Type: image/png
+
+< {{file}}/5.png
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="3.png"
+Content-Type: image/png
+
+< {{file}}/6.png
+
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW
+# Content-Disposition: form-data; name="files"; filename="4.jpg"
+# Content-Type: image/jpg
+
+# < {{file}}/58.jpg
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+###
+Get http://localhost:8080/api/v1/products/by-ids?ids=1,5,7
+
+

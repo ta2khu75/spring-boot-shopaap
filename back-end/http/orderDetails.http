@@ -1,0 +1,35 @@
+Post http://localhost:8080/api/v1/order_details
+Content-Type: application/json
+
+{
+    "order_id":3,
+    "product_id":5,
+    "price":43,
+    "number_of_products":3,
+    "total_money":432453,
+    "color":"#fffff"
+}
+
+###
+Get http://localhost:8080/api/v1/order_details/1
+
+###
+Get http://localhost:8080/api/v1/order_details/order/3
+
+###
+DELETE http://localhost:8080/api/v1/order_details/1
+
+###
+Put http://localhost:8080/api/v1/order_details/99
+Content-Type: application/json
+
+{
+    "price": 43.0,
+    "color": "#0000",
+    "order_id": 3,
+    "product_id": 99,
+    "number_of_products": 10,
+    "total_money": 111
+}
+
+

@@ -1,0 +1,2 @@
+Get http://localhost:8080/api/v1/coupons/calculate?couponCode=HEAVEN&totalAmount=120
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY2NjYiLCJ1c2VySWQiOjE1LCJzdWIiOiIwMTIzNDU2NjY2IiwiZXhwIjoxNzExNTM4ODMzfQ.eF8FskdeqcVV0-sIAyDYpd5PppAPVxUl53rFtf3_s7Y

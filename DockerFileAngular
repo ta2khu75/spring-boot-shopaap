@@ -1,0 +1,30 @@
+# Base image 
+FROM node:20-alpine3.17 AS builder
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the package.json and yarn.lock files
+COPY ./frontend/package.json package.json
+COPY ./frontend/yarn.lock yarn.lock
+
+# Install dependencies using yarn
+RUN yarn install --frozen-lockfile
+
+# Copy the rest of the app's code excluding node_modules
+COPY ./frontend/ .
+
+# Build the Angular app in production mode
+RUN yarn build:production
+
+# Production-ready image
+FROM nginx:alpine
+
+# Copy the built app from the builder stage
+COPY --from=builder /app/frontend /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Run Nginx
+CMD ["nginx", "-g", "daemon off;"]

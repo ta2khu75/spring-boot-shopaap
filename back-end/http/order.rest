@@ -1,0 +1,110 @@
+@name="Admin"
+Post http://localhost:8080/api/v1/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODgiLCJzdWIiOiIwMTIzNDU2Nzg4IiwiZXhwIjoxNzA5MjIyNTU1fQ.zGQMoFGzlIE_r0s6XuX4dOAfzAeZTlk-EjGVuLfcmmM
+Content-Type: application/json
+
+{
+    "user_id":1,
+    "fullname":"Minh",
+    "phone_number":"4234300028",
+    "address":"go2 vap",
+    "email":"Minh",
+    "note":"hang ko vo",
+    "total_money":134.0,
+    "shipping_method":"express",
+    "payment_method":"cod",
+    "cart_items":[
+        {
+            "id":5,
+            "quantity":3
+        },
+        {
+            "id":8,
+            "quantity":2
+        },
+        {
+            "id":10,
+            "quantity":6
+        }
+    ]
+}
+
+###
+@name="user"
+Post http://localhost:8080/api/v1/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODkiLCJzdWIiOiIwMTIzNDU2Nzg5IiwiZXhwIjoxNzA5MjIyNjM1fQ.v5Sjrn19ANneB9AFWr9Nt8AaOrGgEttijMt7EkeBDNA
+Content-Type: application/json
+
+{
+    "user_id":1,
+    "fullname":"Minh",
+    "phone_number":"4234300028",
+    "address":"go2 vap",
+    "email":"Minh",
+    "note":"hang ko vo",
+    "total_money":134.0,
+    "shipping_method":"express",
+    "payment_method":"cod",
+    "cart_items":[
+        {
+            "id":5,
+            "quantity":3
+        },
+        {
+            "id":8,
+            "quantity":2
+        },
+        {
+            "id":10,
+            "quantity":6
+        }
+    ]
+}
+###
+Get http://localhost:8080/api/v1/orders/user/1
+
+
+###
+Get http://localhost:8080/api/v1/orders/1013
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODgiLCJzdWIiOiIwMTIzNDU2Nzg4IiwiZXhwIjoxNzA4OTM0OTExfQ.xeh3YsrsNye2E3sEtxPX4rdbCCQpNV4wCqPY2tWPrMI
+
+###
+Get http://localhost:8080/api/v1/orders/get-orders-by-keyword?page=0&limit=11&keyword=minheo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODgiLCJ1c2VySWQiOjEzLCJzdWIiOiIwMTIzNDU2Nzg4IiwiZXhwIjoxNzA5NzQzMTg4fQ.Yo9oyxna5ZGTpVw_YMxBN_6nxYU88emwshkVlH2FLII
+###
+Put http://localhost:8080/api/v1/orders/1013
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODgiLCJzdWIiOiIwMTIzNDU2Nzg4IiwiZXhwIjoxNzA4OTM0OTExfQ.xeh3YsrsNye2E3sEtxPX4rdbCCQpNV4wCqPY2tWPrMI
+Content-Type: application/json
+
+{
+    "user_id":1,
+    "fullname":"Tran Ngoc Minh",
+    "email":"email",
+    "phone_number":"123343",
+    "address":"vap nga",
+    "note":"hang ko vo",
+    "total_money":34324,
+    "shipping_method":"express",
+    "shipping_address":"ngo cut",
+    "shipping_date":"2024-01-01",
+    "payment_method":"cod",
+    "cart_items":[
+        {
+            "id":5,
+            "quantity":3
+        },
+        {
+            "id":8,
+            "quantity":2
+        },
+        {
+            "id":10,
+            "quantity":6
+        }
+    ]
+}
+ 
+###
+DELETE http://localhost:8080/api/v1/orders/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODgiLCJzdWIiOiIwMTIzNDU2Nzg4IiwiZXhwIjoxNzA4OTM0OTExfQ.xeh3YsrsNye2E3sEtxPX4rdbCCQpNV4wCqPY2tWPrMI
+

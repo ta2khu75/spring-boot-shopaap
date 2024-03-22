@@ -1,0 +1,26 @@
+
+Post http://localhost:8080/api/v1/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODkiLCJ1c2VySWQiOjEyLCJzdWIiOiIwMTIzNDU2Nzg5IiwiZXhwIjoxNzExODk4Mzc4fQ.3LLjk9mFjpe5-J2ayrtgeQ8CQL1QBLV9GpXFnR0L0Pc
+
+{
+    "name":"Đồ phụ mĩ nghệ"
+}
+
+###
+
+Get http://localhost:8080/api/v1/categories
+###
+Get http://localhost:8080/api/v1/categories/145
+
+###
+Put http://localhost:8080/api/v1/categories/1
+Content-Type: application/json
+
+{
+    "name":"Đồ từ điển"
+}
+
+###
+
+DELETE http://localhost:8080/api/v1/categories/1

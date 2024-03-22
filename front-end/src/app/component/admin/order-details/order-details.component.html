@@ -1,0 +1,49 @@
+<div>
+  <h3>Order Information</h3>
+  <p><strong>Order id: </strong>{{ orderResponse.id }}</p>
+  <p><strong>User id: </strong>{{ orderResponse.user_id }}</p>
+  <p><strong>Full name: </strong>{{ orderResponse.fullname }}</p>
+  <p><strong>Phone Number: </strong>{{ orderResponse.phone_number }}</p>
+  <p><strong>Email: </strong>{{ orderResponse.email }}</p>
+  <p><strong>Address: </strong>{{ orderResponse.address }}</p>
+  <p><strong>Note: </strong>{{ orderResponse.note }}</p>
+  <p><strong>Order Date: </strong>{{ orderResponse.order_date }}</p>
+  <div class="form-group">
+    <label for="statusSelect"><strong>Status:</strong></label>
+    <select
+      class="form-select"
+      id="statusSelect"
+      [(ngModel)]="orderResponse.status"
+    >
+      <option value="pending">Pending</option>
+      <option value="processing">Processing</option>
+      <option value="shipper">Shipped</option>
+      <option value="delivered">Delivered</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+  </div>
+  <h3>Order Information</h3>
+  <div class="row">
+    <table class="table-bordered">
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      @for (item of orderResponse.order_details; track $index) {
+      <tr>
+        <!-- <td>
+          <div class="product-info">
+            <img class="product-image" [src]="item.thumbnail" alt="" />
+            <span class="product-name">{{ item.product_name }}</span>
+          </div>
+        </td> -->
+        <td>{{ item.product_name }}</td>
+        <td>{{ item.price }}đ</td>
+        <td>{{ item.number_of_products }}</td>
+      </tr>
+      }
+    </table>
+  </div>
+  <button class="btn btn-primary" (click)="updateOrder()">Update</button>
+</div>

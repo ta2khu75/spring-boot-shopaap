@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div
+    class="d-flex justify-content-between bg-success p-2 align-content-between"
+  >
+    <h1>Xin chào {{ user.full_name }}</h1>
+    <button (click)="logout()" class="btn btn-danger">Logout</button>
+  </div>
+  <div class="row bg-light">
+    <div class="col-2 text-light" style="height: 100vh">
+      <ul class="list-group">
+        <li class="list-group-item" (click)="showAdminComponent('order')">
+          <i class="fa fa-cart-plus" style="font-size: 36px"></i>Orders
+        </li>
+        <li class="list-group-item" (click)="showAdminComponent('category')">
+          <i class="fa fa-cube" style="font-size: 36px"></i>Categories
+        </li>
+        <li class="list-group-item" (click)="showAdminComponent('product')">
+          <i class="fa fa-cubes" style="font-size: 36px"></i>Products
+        </li>
+      </ul>
+    </div>
+    <div class="col-10">
+      <router-outlet></router-outlet>
+      <!-- @switch (adminComponent) { @case ("order") {
+      <app-order></app-order>
+      } @case ("product") {
+      <app-product></app-product>
+      } @case ("category") {
+      <app-category></app-category>
+      } } -->
+      <!-- <ng-container [ngSwitch]="adminComponent">
+
+      </ng-container> -->
+    </div>
+  </div>
+</div>

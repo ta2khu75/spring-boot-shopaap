@@ -1,0 +1,41 @@
+
+Post http://localhost:8080/api/v1/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY2NjYiLCJ1c2VySWQiOjE1LCJzdWIiOiIwMTIzNDU2NjY2IiwiZXhwIjoxNzExNTI1NDQ4fQ.tFu2FdUL1If1rxNlJv59anmOw7JH1ddQmuSKaWDxe20
+
+{
+    "product_id":2,
+    "user_id":15,
+    "content":"Sản phẩm bẩn"
+}
+
+###
+
+
+Put http://localhost:8080/api/v1/comments/17
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY2NjYiLCJ1c2VySWQiOjE1LCJzdWIiOiIwMTIzNDU2NjY2IiwiZXhwIjoxNzExNTI1NDQ4fQ.tFu2FdUL1If1rxNlJv59anmOw7JH1ddQmuSKaWDxe20
+
+{
+    "product_id":2,
+    "user_id":15,
+    "content":"Sản phẩm đẹp"
+}
+
+###
+
+Get http://localhost:8080/api/v1/comments?product_id=2
+###
+Get http://localhost:8080/api/v1/comment/145
+
+###
+Put http://localhost:8080/api/v1/comment/1
+Content-Type: application/json
+
+{
+    "name":"Đồ từ điển"
+}
+
+###
+
+DELETE http://localhost:8080/api/v1/comment/1

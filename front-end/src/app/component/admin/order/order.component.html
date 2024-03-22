@@ -1,0 +1,73 @@
+<p>Order admin add</p>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>User ID</th>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Address</th>
+    <th>Note</th>
+    <th>Order Date</th>
+    <th>Status</th>
+    <th>Total Money</th>
+    <th>Shipping Address</th>
+    <!-- <th>Tracking Number</th> -->
+    <th>Shipping Method</th>
+    <th>Payment Method</th>
+    <th>Active</th>
+  </tr>
+  @for (item of orders; track $index) {
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.user_id}}</td>
+      <td>{{item.fullname}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.phone_number}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.note}}</td>
+      <td>{{item.order_date}}</td>
+      <td>{{item.status}}</td>
+      <td>{{item.total_money}}</td>
+      <td>{{item.shipping_address}}</td>
+      <td>{{item.shipping_method}}</td>
+      <td>{{item.payment_method}}</td>
+      <td><button class="btn btn-primary" (click)="viewOrderDetails(item.id)">View Details</button> <button class="btn btn-danger" (click)="removeOrder(item.id)">Delete</button></td>
+    </tr>
+  }
+</table>
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <!-- @if (currentPage>0) {
+        <li class="page-item" (click)="onPageChange(1)">
+          <a class="page-link" href="#" aria-label="First">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">First</span>
+          </a>
+        </li>
+      } -->
+      @if (currentPage>0) {
+      <li class="page-item" (click)="onPageChange(currentPage - 1)">
+        <a class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      }
+       @for (item of visiblePages; track $index) {
+      <li class="page-item" [class.active]="item-1==currentPage" (click)="onPageChange(item-1)">
+        <a class="page-link">{{ item }}</a>
+      </li>
+      }
+      @if (currentPage<totalPages-1) {}
+      <li class="page-item" (click)="onPageChange(currentPage +1)">
+        <a class="page-link" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

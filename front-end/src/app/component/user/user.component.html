@@ -1,0 +1,82 @@
+<div class="container">
+  <form [formGroup]="userForm">
+    <div class="md-3">
+      <label for="name" class="form-label">Họ và tên</label>
+      <input
+        type="text"
+        class="form-control"
+        [class.is-invalid]="
+          userForm.get('fullname')!.invalid && userForm.get('fullname')!.touched
+        "
+        formControlName="fullname"
+        placeholder="fullname"
+        id="name"
+      />
+      @if (userForm.get('fullname')!.invalid &&
+      userForm.get('fullname')!.touched) {
+      <div class="invalid-feedback">Ho va ten la bat buoc</div>
+      }
+    </div>
+    <div class="md-3">
+      <label for="email" class="form-label">Password</label>
+      <input
+        type="password"
+        placeholder="password"
+        class="form-control"
+        [class.is-invalid]="
+          userForm.get('password')!.invalid && userForm.get('password')!.touched
+        "
+        formControlName="password"
+        id="password"
+      />
+      @if (userForm.get('password')!.invalid &&
+      userForm.get('password')!.touched) {
+      <div class="invalid-feedback">Password it nhất 3 ký tự</div>
+      }
+    </div>
+    <div class="md-3">
+      <label for="confirm" class="form-label"></label>
+      <input
+        type="password"
+        placeholder="confirm password"
+        class="form-control"
+        [class.is-invalid]="
+          userForm.get('retype_password')!.invalid &&
+          userForm.get('retype_password')!.touched
+        "
+        formControlName="retype_password"
+        id="confirm"
+      />
+      @if (userForm.get('retype_password')!.invalid &&
+      userForm.get('retype_password')!.touched) {
+      <div class="invalid-feedback">So dien thoai phai 10 so</div>
+      }
+    </div>
+    <div class="md-3">
+      <label for="address" class="form-label">Địa chỉ</label>
+      <input
+        type="text"
+        class="form-control"
+        [class.is-invalid]="
+          userForm.get('address')!.invalid && userForm.get('address')!.touched
+        "
+        formControlName="address"
+        id="address"
+      />
+      @if (userForm.get('address')!.invalid && userForm.get('address')!.touched)
+      {
+      <div class="invalid-feedback">Dia chi it nhat phai 5 ky tu</div>
+      }
+    </div>
+    <div class="md-3">
+      <label for="birthday" class="form-label">Ngày sinh</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="date_of_birth"
+        id="birthday"
+      />
+    </div>
+    <button (click)="update()">Cập nhập</button>
+  </form>
+</div>

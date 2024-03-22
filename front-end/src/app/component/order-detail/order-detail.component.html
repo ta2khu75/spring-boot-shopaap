@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="container">
+  <div class="confirmation-container">
+    <h1>Đây là trang hàng đã đặt</h1>
+    <p>Trang này hiện thị thông tin và danh sách các sản phẩm đã đặt</p>
+  </div>
+  <div class="row">
+    <div class="card col-lg-6 col-mb-12 mb-md-5">
+      <div class="card-header"><h4>Thông tin người nhận</h4></div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item">Họ tên: {{ orderResponse.fullname }}</li>
+          <li class="list-group-item">Email: {{ orderResponse.email }}</li>
+          <li class="list-group-item">
+            Số điện thoại: {{ orderResponse.phone_number }}
+          </li>
+          <li class="list-group-item">Địa chỉ: {{ orderResponse.address }}</li>
+          <li class="list-group-item">Ghi chú: {{ orderResponse.note }}</li>
+          <li class="list-group-item">
+            Phương thức vận chuyển: {{ orderResponse.shipping_method }}
+          </li>
+          <li class="list-group-item">
+            Phương thức thanh toán: {{ orderResponse.payment_method }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card col-lg-6 col-mb-12 ">
+      <div class="card-header"><h4>Sản phẩm đã đặt</h4></div>
+      <div class="card-body">
+        <table class="text-light">
+          <thead>
+            <tr>
+              <th scope="col" class="text-start">Sản phẩm</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Đơn giá</th>
+              <th scope="col">Tổng giá</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of orderResponse.order_details; track $index) {
+            <tr>
+              <td>
+                <div class="product-info">
+                  <img class="product-image" [src]="item.thumbnail" alt="" />
+                  <span class="product-name">{{ item.product_name }}</span>
+                </div>
+              </td>
+              <td>{{ item.number_of_products }}</td>
+              <td>{{ item.price }}đ</td>
+              <td>{{ item.number_of_products * item.price }}đ</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h4>{{ totalAmount }}đ</h4>
+    </div>
+
+    <div class="text-center mt-3">
+      <button class="btn btn-gradient" type="button">Tiếp tục mua hàng</button>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

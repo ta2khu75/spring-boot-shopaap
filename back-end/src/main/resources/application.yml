@@ -1,0 +1,90 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  datasource:
+    # url: jdbc:sqlserver://sqlserver2022-container:1432;database=shopapp;encrypt=false;
+    url: ${SPRING_DATASOURCE_URL:jdbc:sqlserver://localhost:1432;database=shopapp;encrypt=false;}
+    username: sa
+    password: ${MSSQL_SA_PASSWORD:Bom474002}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  flyway:
+    locations: classpath:/db/migration/,classpath:/dev/db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      #transaction-id-prefix: tx.
+      properties:
+        "[spring.json.type.mapping]": category:dev.ta2khu75.shopapp.models.Category
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+api:
+  prefix: api/v1
+jwt:
+  expiration: 2592000
+  secretKey: 0aFHxm66Z/cqitlIhygVaTMf0Gz3GhfBLBBwVEZSblc=
+  refresh:
+    expiration: 3888000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+  show-actuator: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /api/v1/actuator
+      exposure:
+        include: "health, info"
+# Đường dẫn tới thư mục lưu trữ file tải lên
+# upload.directory=src/main/resources/static/uploads
+# spring.mail.host=smtp.gmail.com
+# spring.mail.port=587
+# spring.mail.username=boomkings474@gmail.com
+# spring.mail.password=plvy vcph ixtr fxec
+# spring.mail.properties.mail.smtp.auth=true
+# spring.mail.properties.mail.smtp.starttls.enable=true
+
+# spring.servlet.multipart.max-file-size=10MB
+# spring.servlet.multipart.max-request-size=10MB
+# spring.messages.basename=i18n/messages
+# spring.messages.encoding=UTF-8
+# spring.datasource.url=${SPRING-DATASOURCE_URL}
+# spring.datasource.username=sa
+# spring.datasource.password=${MSSQL_SA_PASSWORD}
+# spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+# spring.jpa.hibernate.ddl-auto=none
+# spring.jpa.show-sql=true
+# spring.jpa.properties.hibernate.format_sql=true
+# api.prefix=api/v1
+# jwt.expiration=2592000
+# jwt.secretKey=0aFHxm66Z/cqitlIhygVaTMf0Gz3GhfBLBBwVEZSblc=
+# logging.level.org.springframework.security=DEBUG

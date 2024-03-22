@@ -1,0 +1,78 @@
+services:
+  sqlserver2022-container:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver2022-container
+    restart: always
+    ports:
+      - "1432:1433"
+    environment:
+      MSSQL_SA_PASSWORD: Bom474002
+      ACCEPT_EULA: Y
+    networks:
+      - shopapp-network
+
+  redis-container:
+    image: redis:latest
+    container_name: redis-container
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
+    networks:
+      - shopapp-network
+  shopapp-spring-container:
+    networks:
+      - shopapp-network
+    container_name: shopapp-spring-container
+    build:
+      context: .
+      dockerfile: DockerFileJavaSpring
+    ports:
+      - 8090:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:sqlserver://sqlserver2022-container:1432;database=shopapp;encrypt=false;
+      MSSQL_SA_PASSWORD: Bom474002
+      ACCEPT_EULA: Y
+    depends_on:
+      - sqlserver2022-container
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl --fail http://localhost:8088/actuator/health || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  shopapp-angular-container:
+    container_name: shopapp-angular-container
+    build:
+      context: .
+      dockerfile: DockerFileAngular
+      #docker tag <image_id> shopapp-angular:1.0.0
+    ports:
+      - "4301:80"
+    restart: always
+    networks:
+      - shopapp-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+networks:
+  shopapp-network:
+    name: shopapp-network
+    driver: bridge
+# docker-compose -f ./deployment.yml up -d sqlserver2022-container
+# docker cp ./sql/shopapp-2024218-23-14-13.bak sqlserver2022-container:/var/opt/mssql
+# docker-compose -f ./deployment.yml down
+# docker-compose -f ./deployment.yml build shopapp-spring-container
+# docker-compose -f ./deployment.yml up -d shopapp-spring-container
+
+# docker-compose -f ./deployment.yml build shopapp-angular-container
+# docker-compose -f ./deployment.yml up -d shopapp-angular-container
+# docker-compose -f ./deployment.yml up -d redis-container

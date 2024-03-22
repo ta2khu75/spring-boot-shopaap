@@ -1,0 +1,17 @@
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
+circle {
+    opacity: 0.7;
+}
+
+rect {
+    transform: rotate(30deg);
+}
+
+polygon {
+    stroke: #fff;
+    stroke-width: 3;
+}

@@ -1,0 +1,143 @@
+<form #registerForm="ngForm" class="container">
+  <div class="row">
+    <div class="col-6 offset-md-3">
+      <div class="login-form mx-auto">
+        <h2 class="login-header">Đăng ký</h2>
+        <div class="form-group">
+          <label for="phone" class="form-control">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phone"
+            [(ngModel)]="phone"
+            (input)="onPhoneChange()"
+            id="phone"
+            (focus)="registerForm.form.markAsTouched()"
+            required=""
+          />
+          <div class="divider-nospace"></div>
+          @if(phone.length < 6 && registerForm.form.touched){
+          <p class="text-danger">So dien thoai phai co it nhat 6 ky tu</p>
+          }
+        </div>
+        <div class="mt-4"></div>
+        <div class="form-group password-field">
+          <label for="password">Mật khẩu</label>
+          <input
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            required=""
+            placeholder="ít nhất 3 ký tự"
+            id="password"
+            class="form-control"
+          />
+          <i class="password-toggle fas fa-eye-slash"></i>
+          <div class="divider-nospace"></div>
+          @if(password.length<3 && registerForm.form.touched){
+          <p class="text-danger">Mat khau phai co it nhat 3 ky tu</p>
+          }
+        </div>
+        <div class="mt-4"></div>
+
+        <div class="form-group password-field">
+          <label for="password">Xác nhận mật khẩu</label>
+          <input
+            type="password"
+            [(ngModel)]="retypePassword"
+            name="retypePassword"
+            required=""
+            (input)="registerForm.form.markAllAsTouched(); checkPasswordMatch()"
+            placeholder="ít nhất 3 ký tự"
+            id="password"
+            class="form-control"
+          />
+          <i class="password-toggle fas fa-eye-slash"></i>
+          <div class="divider-nospace"></div>
+          @if(retypePassword.length < 3 && registerForm.form.touched){
+          <p class="text-danger">Xac nhan aMat khau phai co it nhat 3 ky tu</p>
+          } @if(registerForm.controls['retypePassword'].hasError(
+          'passwordMisMath' ) && registerForm.form.touched){
+          <p class="text-danger">Mat khau khong khop</p>
+          }
+        </div>
+        <div class="mt-4"></div>
+
+        <div class="form-group">
+          <label for="email" class="form-control">Họ và tên</label>
+          <input
+            type="text"
+            name="fullname"
+            [(ngModel)]="fullname"
+            required=""
+            class="form-control"
+            id="email"
+          />
+          <div class="divider-nospace"></div>
+        </div>
+        <div class="mt-4"></div>
+
+        <div class="form-group">
+          <label for="date" class="form-control">Ngay sinh</label>
+          <input
+            type="date"
+            name="birthday"
+            [(ngModel)]="birthday"
+            required=""
+            (input)="registerForm.form.markAsTouched(); chechAge()"
+            class="form-control"
+            id="date"
+          />
+          <div class="divider-nospace"></div>
+          @if(registerForm.controls['birthday'].hasError('invalidAge') &&
+          registerForm.form.touched){
+          <p class="text-danger">Phai lon hon 18 tuoi</p>
+          }
+        </div>
+        <div class="mt-4"></div>
+
+        <div class="form-group">
+          <label for="email" class="form-control">Địa chỉ</label>
+          <input
+            type="text"
+            name="address"
+            [(ngModel)]="address"
+            class="form-control"
+            name="address"
+            id="email"
+          />
+          <div class="divider-nospace"></div>
+        </div>
+        <div class="mt-4"></div>
+
+        <div class="form-group">
+          <div class="form-check checkbox-text">
+            <span style="display: flex">
+              <input
+                type="checkbox"
+                name="remember"
+                id="remember"
+                class="form-check-input"
+              />
+              <label
+                for="remember"
+                name="isAccepted"
+                [(ngModel)]="isAccepted"
+                class="form-check-label text-start"
+                >Tôi đồng ý với các điều khoản và điều kiện</label
+              >
+            </span>
+          </div>
+        </div>
+
+        <button class="login-button" (click)="register()">Đăng ký</button>
+        <div class="divider"></div>
+        <p class="text-center">
+          <span>Bạn đã có tài khoản?</span>
+          <a class="register-link" routerLink="/login">Đăng nhập</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</form>
+<app-footer></app-footer>

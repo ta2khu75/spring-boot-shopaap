@@ -1,0 +1,86 @@
+Post http://localhost:8080/api/v1/users/register
+Content-Type: application/json
+
+{
+  "fullname":"ta2khu75",
+  "phone_number":"0123456787",
+  "address":"vấp ngã",
+  "password":"123",
+  "retype_password":"123",
+  "date_of_birth":"2000-01-10",
+  "facebook_account_id":0,
+  "google_account_id":0,
+  "role_id":2
+}
+###
+Post http://localhost:8080/api/v1/users/details
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODkiLCJ1c2VySWQiOjEyLCJzdWIiOiIwMTIzNDU2Nzg5IiwiZXhwIjoxNzA5NDQxNjUwfQ.msdVtwhMgnekmZ2Kxkgkk6EGvpmk6L00BGUox4t9ICY
+###
+
+###
+PUT http://localhost:8080/api/v1/users/reset-password/15
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODkiLCJ1c2VySWQiOjEyLCJzdWIiOiIwMTIzNDU2Nzg5IiwiZXhwIjoxNzExNDY4MTIzfQ.X_z1gmFld6rQuL988ZxCFhSQonKHxGcF7g4pjUdo_ZI
+###
+
+PUT http://localhost:8080/api/v1/users/block-or-enable/15/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODkiLCJ1c2VySWQiOjEyLCJzdWIiOiIwMTIzNDU2Nzg5IiwiZXhwIjoxNzExNDY4MTIzfQ.X_z1gmFld6rQuL988ZxCFhSQonKHxGcF7g4pjUdo_ZI
+###
+@name="user"
+Post http://localhost:8080/api/v1/users/login
+User-Agent: mobile
+Content-Type: application/json
+Accept-Language:vi
+
+{
+  "phone_number":"0123456666",
+  "password":"4384f",
+  "role_id":1
+}
+###
+Get http://localhost:8080/api/v1/users?page=0&limit=10&&keyword=
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3ODkiLCJ1c2VySWQiOjEyLCJzdWIiOiIwMTIzNDU2Nzg5IiwiZXhwIjoxNzExNDY0ODIwfQ.8eMxrQ_oVea0HKAL9-BysnLiSNrAq8eB5ZtxlHFXnaU
+###
+Post http://localhost:8080/api/v1/users/refresh-token
+Content-Type: application/json
+
+{
+  "refresh_token": "4a23f0d1-f95a-4261-bfac-f6e054a97719"
+}
+###
+@name="admin"
+Post http://localhost:8080/api/v1/users/login
+User-Agent: rest-client
+Content-Type: application/json
+Accept-Language:vi
+
+{
+  "phone_number":"0123456789",
+  "password":"123456789",
+  "role_id":2
+}
+
+###
+@name="user"
+Post http://localhost:8080/api/v1/users/login
+Content-Type: application/json
+Accept-Language:vi
+
+{
+  "phone_number":"0123456788",
+  "password":"123",
+  "role_id":1
+}
+###
+Put http://localhost:8080/api/v1/users/user-detail
+Content-Type: application/json
+
+{
+  "id":1,
+  "fullname":"minh ngu",
+  "address":"nhà a ngỏ bỏ",
+  "password":"1234",
+  "date_of_birth":"2004-04-07",
+  "facebook_account_id":0,
+  "google_account_id":0
+}
+"0aFHxm66Z/cqitlIhygVaTMf0Gz3GhfBLBBwVEZSblc="
